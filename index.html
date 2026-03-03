@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hantech Klima | Katalog</title>
+    <title>Hantech Klima | Mardin Bayi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #005f73;
-            --secondary: #0a9396;
-            --accent: #ee9b00;
-            --bg: #f8f9fa;
-            --text: #212529;
+            --primary-gradient: linear-gradient(135deg, #00b4db, #0083b0);
+            --glass: rgba(255, 255, 255, 0.9);
+            --text-dark: #1a2a3a;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            /* Arka plan: Modern, ferah bir buz mavisi gradyan */
+            background: #eef2f3;
+            background: linear-gradient(to bottom, #eef2f3, #8e9eab); 
+            background-attachment: fixed;
             margin: 0;
-            padding: 20px 10px;
+            padding: 20px 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -27,150 +28,179 @@
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            color: var(--text-dark);
         }
 
-        .header h1 { color: var(--primary); margin-bottom: 5px; font-size: 28px; }
-        .header p { color: #666; font-size: 14px; }
-
-        .catalog-grid {
-            max-width: 500px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        .product-card {
+        .logo-area {
             background: white;
+            width: 80px;
+            height: 80px;
             border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-            border: 1px solid #e9ecef;
-            transition: transform 0.3s;
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 280px;
-            object-fit: contain;
-            background: #fff;
-            padding: 10px;
-        }
-
-        .product-info {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .product-info h3 {
-            margin: 0 0 10px;
-            font-size: 18px;
-            color: var(--primary);
-        }
-
-        .product-info p {
-            font-size: 13px;
-            color: #555;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .btn-price {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--secondary);
-            color: white;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: background 0.3s;
-            width: 80%;
-        }
-
-        .btn-price i { margin-right: 8px; }
-        .btn-price:hover { background: var(--primary); }
-
-        .social-links {
-            margin-top: 40px;
-            width: 100%;
-            max-width: 500px;
-        }
-
-        .social-card {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
-            background: white;
-            border-radius: 15px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            margin: 0 auto 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            color: #0083b0;
+            font-size: 35px;
         }
 
-        footer { margin-top: 50px; font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: 2px; }
+        .header h1 { margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -1px; }
+        .header p { margin: 5px 0; opacity: 0.8; font-weight: 300; }
+
+        .catalog-container {
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .product-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            margin-bottom: 30px;
+            padding: 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover { transform: translateY(-5px); }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 20px;
+            background: white;
+        }
+
+        .info {
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        .info h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #005f73;
+        }
+
+        .info p {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .price-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,131,176,0.3);
+            transition: all 0.3s;
+        }
+
+        .price-btn:active { transform: scale(0.95); }
+        .price-btn i { margin-right: 10px; font-size: 20px; }
+
+        .social-section {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .insta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            color: #e1306c;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        footer {
+            margin: 40px 0;
+            font-size: 12px;
+            color: #555;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
 
     <div class="header">
+        <div class="logo-area"><i class="fas fa-snowflake"></i></div>
         <h1>Hantech Klima</h1>
-        <p>Mardin Profesyonel İklimlendirme Çözümleri</p>
+        <p>Geleceğin İklimlendirme Teknolojisi</p>
     </div>
 
-    <div class="catalog-grid">
+    <div class="catalog-container">
         
         <div class="product-card">
-            <img src="Screenshot_20260216_231112.jpg">
-            <div class="product-info">
-                <h3>Multi-Inverter Serisi</h3>
-                <p>Yüksek enerji tasarrufu ve ultra sessiz çalışma modu ile evinizde konforun tadını çıkarın.</p>
-                <a href="https://wa.me/905441746447?text=Multi-Inverter%20hakkında%20bilgi%20alabilir%20miyim?" class="btn-price"><i class="fab fa-whatsapp"></i> Fiyat Al</a>
+            <img src="Screenshot_20260216_231112.jpg" alt="Hantech 1">
+            <div class="info">
+                <h3>Hantech Inverter Pro</h3>
+                <p>Sessiz çalışma ve yüksek enerji tasarrufuyla tanışın. Akıllı uyku modu ile konforunuzu artırın.</p>
+                <a href="https://wa.me/905441746447?text=Inverter%20Pro%20fiyatı%20öğrenebilir%20miyim?" class="price-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al
+                </a>
             </div>
         </div>
 
         <div class="product-card">
-            <img src="Screenshot_20260216_231243.jpg">
-            <div class="product-info">
-                <h3>Eco-Smart Duvar Tipi</h3>
-                <p>A++ enerji sınıfı ile hem doğayı hem cebinizi koruyan akıllı teknoloji.</p>
-                <a href="https://wa.me/905441746447?text=Eco-Smart%20hakkında%20bilgi%20alabilir%20miyim?" class="btn-price"><i class="fab fa-whatsapp"></i> Fiyat Al</a>
+            <img src="Screenshot_20260216_231243.jpg" alt="Hantech 2">
+            <div class="info">
+                <h3>Eco-Smart Split</h3>
+                <p>A++ Performans. Hızlı soğutma teknolojisi ile en sıcak günlerde bile saniyeler içinde ferahlayın.</p>
+                <a href="https://wa.me/905441746447?text=Eco-Smart%20fiyatı%20öğrenebilir%20miyim?" class="price-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al
+                </a>
             </div>
         </div>
 
         <div class="product-card">
-            <img src="Screenshot_20260216_231209.jpg">
-            <div class="product-info">
-                <h3>Salon Tipi Profesyonel</h3>
-                <p>Geniş alanlar için güçlü hava üfleme kapasitesi ve şık tasarım bir arada.</p>
-                <a href="https://wa.me/905441746447?text=Salon%20Tipi%20hakkında%20bilgi%20alabilir%20miyim?" class="btn-price"><i class="fab fa-whatsapp"></i> Fiyat Al</a>
+            <img src="Screenshot_20260216_231209.jpg" alt="Hantech 3">
+            <div class="info">
+                <h3>Salon Tipi Power</h3>
+                <p>Ofis ve geniş salonlar için devasa kapasite. Uzun mesafeli hava üfleme ve dijital kontrol paneli.</p>
+                <a href="https://wa.me/905441746447?text=Salon%20Tipi%20fiyatı%20öğrenebilir%20miyim?" class="price-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al
+                </a>
             </div>
         </div>
 
         <div class="product-card">
-            <img src="Screenshot_20260216_231320.jpg">
-            <div class="product-info">
-                <h3>Hantech Premium Black</h3>
-                <p>Estetik görünüm ve 3D hava akış teknolojisi ile her köşeye eşit sıcaklık.</p>
-                <a href="https://wa.me/905441746447?text=Premium%20Black%20hakkında%20bilgi%20alabilir%20miyim?" class="btn-price"><i class="fab fa-whatsapp"></i> Fiyat Al</a>
+            <img src="Screenshot_20260216_231320.jpg" alt="Hantech 4">
+            <div class="info">
+                <h3>Premium Gold Serisi</h3>
+                <p>Özel filtreleme sistemiyle havayı temizler, toz ve bakterileri uzak tutar. Sağlıklı iklimlendirme.</p>
+                <a href="https://wa.me/905441746447?text=Premium%20Gold%20fiyatı%20öğrenebilir%20miyim?" class="price-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al
+                </a>
             </div>
+        </div>
+
+        <div class="social-section">
+            <a href="https://instagram.com/Hantech_klima47" class="insta-btn">
+                <i class="fab fa-instagram" style="margin-right: 10px;"></i> Bizi Instagram'da Takip Edin
+            </a>
         </div>
 
     </div>
 
-    <div class="social-links">
-        <a href="https://instagram.com/Hantech_klima47" class="social-card">
-            <i class="fab fa-instagram" style="margin-right:10px; color:#e1306c;"></i> Instagram Takip Et
-        </a>
-    </div>
-
-    <footer>Hantech Klima Mardin</footer>
+    <footer>HANTECH MARDİN YETKİLİ BAYİ</footer>
 
 </body>
 </html>
