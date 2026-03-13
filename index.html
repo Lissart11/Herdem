@@ -62,9 +62,9 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             border: 1px solid rgba(255,255,255,0.5);
             transition: transform 0.3s ease;
+            position: relative; /* Büyütme efekti için gerekli */
+            overflow: hidden; /* Büyüyen fotoğrafın taşmasını engeller */
         }
-
-        .product-card:hover { transform: translateY(-5px); }
 
         .product-card img {
             width: 100%;
@@ -72,6 +72,13 @@
             object-fit: contain;
             border-radius: 20px;
             background: white;
+            transition: transform 0.3s ease; /* Büyüme/küçülme geçişi */
+            cursor: pointer; /* Fare ile üzerine gelince büyütülebileceğini gösterir */
+        }
+
+        /* JavaScript ile eklenecek büyüme sınıfı */
+        .product-card.zoomed img {
+            transform: scale(1.15); /* Fotoğrafı %15 büyüt */
         }
 
         .info {
@@ -148,7 +155,7 @@
 
     <div class="catalog-container">
         
-        <div class="product-card">
+        <div class="product-card" data-zoomable>
             <img src="Screenshot_20260216_231112.jpg" alt="Hantech 1">
             <div class="info">
                 <h3>Hantech Inverter Pro</h3>
@@ -159,7 +166,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-zoomable>
             <img src="Screenshot_20260216_231243.jpg" alt="Hantech 2">
             <div class="info">
                 <h3>Eco-Smart Split</h3>
@@ -170,7 +177,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-zoomable>
             <img src="Screenshot_20260216_231209.jpg" alt="Hantech 3">
             <div class="info">
                 <h3>Salon Tipi Power</h3>
@@ -181,7 +188,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-zoomable>
             <img src="Screenshot_20260216_231320.jpg" alt="Hantech 4">
             <div class="info">
                 <h3>Premium Gold Serisi</h3>
@@ -192,55 +199,55 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-zoomable>
             <img src="11.jpeg" alt="Hantech Hızlı Soğutma">
             <div class="info">
-                <h3>Yüksek Performans ve Hızlı Soğutma</h3>
-                <p>Sıcak günlerde mekanınızı anında serinleten, üstün soğutma kapasitesine sahip güçlü motor teknolojisi.</p>
-                <a href="https://wa.me/905441746447?text=Hızlı%20Soğutma%20özellikli%20klima%20fiyatını%20öğrenebilir%20miyim?" class="price-btn">
+                <h3>Hızlı Soğutma Teknolojisi</h3>
+                <p>Sıcak günlerde mekanınızı anında serinleten, üstün soğutma kapasitesine sahip güçlü motor.</p>
+                <a href="https://wa.me/905441746447?text=Hızlı%20Soğutma%20klima%20fiyatını%20öğrenebilir%20miyim?" class="price-btn">
                     <i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al
                 </a>
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-zoomable>
             <img src="12.jpeg" alt="Hantech Enerji Tasarrufu">
             <div class="info">
                 <h3>A++ Enerji Verimliliği</h3>
-                <p>Yeni nesil Inverter teknolojisi sayesinde minimum enerji tüketimi ile faturanızda maksimum tasarruf sağlayın.</p>
-                <a href="https://wa.me/905441746447?text=A++%20Enerji%20Tasarruflu%20klima%20fiyatını%20öğrenebilir%20miyim?" class="price-btn">
+                <p>Maksimum performans, minimum tüketim. Tasarruflu Inverter motor ile faturalarınız düşer.</p>
+                <a href="https://wa.me/905441746447?text=A++%20Enerji%20klima%20fiyatını%20öğrenebilir%20miyim?" class="price-btn">
                     <i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al
                 </a>
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-zoomable>
             <img src="13.jpeg" alt="Hantech Sessiz Çalışma">
             <div class="info">
                 <h3>Ultra Sessiz Çalışma Modu</h3>
-                <p>Gelişmiş fan sistemi ile yokmuş gibi çalışır; evinizde ve ofisinizde gürültüsüz, huzurlu bir ortam sunar.</p>
-                <a href="https://wa.me/905441746447?text=Ultra%20Sessiz%20klima%20fiyatını%20öğrenebilir%20miyim?" class="price-btn">
+                <p>Gelişmiş fan sistemi ile gürültüsüz, huzurlu bir ortam sunar. Ev ve ofis için ideal.</p>
+                <a href="https://wa.me/905441746447?text=Sessiz%20klima%20fiyatını%20öğrenebilir%20miyim?" class="price-btn">
                     <i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al
                 </a>
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-zoomable>
             <img src="14.jpeg" alt="Hantech Modern Tasarım">
             <div class="info">
                 <h3>Modern ve Zarif Tasarım</h3>
-                <p>Kompakt yapısı ve şık çizgileriyle her türlü iç mekan dekorasyonuna kusursuz uyum sağlar.</p>
-                <a href="https://wa.me/905441746447?text=Modern%20Tasarım%20klima%20fiyatını%20öğrenebilir%20miyim?" class="price-btn">
+                <p>Kompakt yapısı ve şık çizgileriyle her türlü iç mekan dekorasyonuna uyum sağlar.</p>
+                <a href="https://wa.me/905441746447?text=Modern%20klima%20fiyatını%20öğrenebilir%20miyim?" class="price-btn">
                     <i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al
                 </a>
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-zoomable>
             <img src="15.jpeg" alt="Hantech Dört Mevsim">
             <div class="info">
-                <h3>Dört Mevsim Kesintisiz Konfor</h3>
-                <p>Sadece yazın serinletmekle kalmaz, kış aylarında sunduğu yüksek ısıtma performansıyla da her mevsim ideal sıcaklığı yakalar.</p>
+                <h3>Dört Mevsim Konfor</h3>
+                <p>Yazın serinletir, kışın güçlü ısıtma sağlar. Her mevsim ideal sıcaklığı yakalayın.</p>
                 <a href="https://wa.me/905441746447?text=Dört%20Mevsim%20klima%20fiyatını%20öğrenebilir%20miyim?" class="price-btn">
                     <i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al
                 </a>
@@ -256,6 +263,38 @@
     </div>
 
     <footer>HANTECH MARDİN YETKİLİ BAYİ</footer>
+
+    <script>
+        // Büyütülebilir tüm ürün kartlarını seç
+        const zoomableCards = document.querySelectorAll('.product-card[data-zoomable]');
+
+        zoomableCards.forEach(card => {
+            // Fare ile basılı tutma (Bilgisayar)
+            card.addEventListener('mousedown', () => {
+                card.classList.add('zoomed');
+            });
+            card.addEventListener('mouseup', () => {
+                card.classList.remove('zoomed');
+            });
+            // Fare dışarı çıkarsa da küçülsün
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('zoomed');
+            });
+
+            // Dokunmatik basılı tutma (Mobil)
+            card.addEventListener('touchstart', (e) => {
+                // Varsayılan kaydırma hareketini engellemek gerekebilir
+                // e.preventDefault(); 
+                card.classList.add('zoomed');
+            });
+            card.addEventListener('touchend', () => {
+                card.classList.remove('zoomed');
+            });
+            card.addEventListener('touchcancel', () => {
+                card.classList.remove('zoomed');
+            });
+        });
+    </script>
 
 </body>
 </html>
